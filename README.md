@@ -109,4 +109,4 @@ Contribuições são bem-vindas! Por favor, leia nossas diretrizes de contribui�
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes.
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](https://github.com/cirebox/bigqueryorm/blob/main/LICENSE) para detalhes.
