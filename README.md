@@ -23,60 +23,39 @@ npm install bigquery-orm
 ### Definindo uma Entidade (Tabela)
 
 ```javascript
-const { Dataset, Table, Column } = require('bigquery-orm');
+import { Column, Dataset, Index, Table } from "../../src/decorators";
 
-@Dataset('my_dataset')
-class UserEvents {
-  @Table({ partitionBy: 'DATE(timestamp)', clusterBy: ['user_id'] })
-  @Column({ type: 'STRING', mode: 'REQUIRED' })
-  user_id;
+@Dataset('integration_teste_system')
+@Table({ tableName: 'user_teste', partitionBy: 'DATE(timestamp)', clusterBy: ['user_id'] })
+@Index('user_id', 'event_type')
+export class User {
+  @Column({ name: 'USER_ID', type: 'STRING', mode: "REQUIRED" })
+  id!: string;
 
-  @Column({ type: 'TIMESTAMP', mode: 'REQUIRED' })
-  timestamp;
+  @Column({ name: 'USER_NAME', type: 'STRING', mode: "REQUIRED" })
+  name!: string;
 
-  @Column({ type: 'STRING', mode: 'REQUIRED' })
-  event_type;
+  @Column({ name: 'USER_AGE', type: 'FLOAT', mode: "NULLABLE", description: "IDADE" })
+  age?: number;
 
-  @Column({ type: 'JSON' })
-  event_data;
+  @Column({ name: 'USER_ACTIVE', type: 'BOOLEAN', mode: "NULLABLE" })
+  isActive?: boolean;
+
+  @Column({ name: 'USER_CREATEAT', type: 'DATE', mode: "NULLABLE" })
+  createAt?: Date;
 }
-```
-
-### Configurando a Conexão
-
-```javascript
-const { BigQueryConnection } = require('bigquery-orm');
-
-const connection = new BigQueryConnection({
-  projectId: 'your-project-id',
-  keyFilename: '/path/to/your/keyfile.json'
-});
-
-await connection.connect();
 ```
 
 ### Executando Consultas
 
 ```javascript
-const { BigQueryRepository } = require('bigquery-orm');
-
-const userEventsRepo = new BigQueryRepository(connection, UserEvents);
-
-// Inserir dados
-await userEventsRepo.insert([
-  { user_id: '123', timestamp: new Date(), event_type: 'login', event_data: { ip: '192.168.1.1' } }
-]);
-
-// Executar uma consulta
-const results = await userEventsRepo.query(`
-  SELECT event_type, COUNT(*) as count
-  FROM \`${UserEvents.datasetName}.${UserEvents.tableName}\`
-  WHERE DATE(timestamp) = CURRENT_DATE()
-  GROUP BY event_type
-`);
-
-// Carregar dados de um arquivo CSV
-await userEventsRepo.loadFromCsv('gs://your-bucket/user_events.csv');
+// Cria um repositório para a entidade User
+  const userRepository = new BigQueryRepository<User>({
+    projectId: process.env.GCP_BIGQUERY_PROJECT_ID,
+    keyFilename: process.env.GCP_BIGQUERY_KEY_FILE_PATH,
+    sync: Boolean(process.env.GCP_BIGQUERY_SYNC),
+    dataset: process.env.GCP_BIGQUERY_DATASET_ID,
+  }, User);
 ```
 
 ### Gerenciando Jobs
@@ -94,14 +73,6 @@ const status = await job.getStatus();
 // Obter os resultados quando o job estiver completo
 const [rows] = await job.getQueryResults();
 ```
-
-## Recursos Avançados
-
-- Suporte para views materializadas
-- Gerenciamento de permissões de dataset e tabela
-- Integração com o BigQuery ML para modelos de aprendizado de máquina
-- Suporte para funções definidas pelo usuário (UDFs)
-- Gerenciamento de slots de consulta e cotas
 
 ## Contribuindo
 

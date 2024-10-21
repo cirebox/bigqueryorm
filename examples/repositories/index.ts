@@ -1,0 +1,1 @@
+export { UserRepositoryOrm } from './user.repository'

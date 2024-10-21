@@ -1,0 +1,38 @@
+{
+  "name": "bigquery-orm",
+  "version": "1.0.0",
+  "description": "An ORM for Google BigQuery",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --ext .js,.ts src/",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "build": "babel src -d dist",
+    "prepublishOnly": "npm run build",
+    "dev": "npx tsc examples/index.ts && node dist/examples/index.js"
+  },
+  "keywords": [
+    "bigquery",
+    "orm",
+    "google-cloud",
+    "database"
+  ],
+  "author": "cirebox",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/bigquery": "^6.2.1",
+    "dayjs": "^1.11.13",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.7",
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "@typescript-eslint/eslint-plugin": "^8.9.0",
+    "@typescript-eslint/parser": "^8.9.0",
+    "eslint": "^7.32.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.8.8",
+    "typescript": "^5.6.3"
+  }
+}
