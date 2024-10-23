@@ -6,7 +6,7 @@ export type BQDatasetOptions = {
   name: string;
   suffix?: ManipulateType;
   projectId?: string;
-  datasetId: string;
+  datasetId?: string;
 } & DatasetResource;
 
 export function BQDataset(options: BQDatasetOptions) {
