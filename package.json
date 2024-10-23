@@ -1,6 +1,6 @@
 {
   "name": "bigquery-orm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An ORM for Google BigQuery",
   "author": "cirebox",
   "license": "MIT",
