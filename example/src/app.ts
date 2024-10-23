@@ -10,7 +10,11 @@ async function main() {
   const userService = container.resolve(UserService);
 
   // Criar um novo usuário
-  const newUser: User = { id: '1', name: 'John Doe', email: 'john@example.com' };
+  const newUser: User = {
+    id: '1',
+    name: 'John Doe',
+    email: 'john@example.com',
+  };
   await userService.createUser(newUser);
 
   // Listar todos os usuários

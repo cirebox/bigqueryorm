@@ -1,4 +1,10 @@
-import { BQColumn, BQDataset, BQTable, FieldModeEnum, FieldTypeEnum } from "bigquery-orm";
+import {
+  BQColumn,
+  BQDataset,
+  BQTable,
+  FieldModeEnum,
+  FieldTypeEnum,
+} from 'bigquery-orm';
 
 @BQDataset({
   name: 'user_test_dataset',

@@ -8,9 +8,13 @@
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true, /* Emit design-type metadata for decorated declarations in source files. */
-    "outDir": "./dist"
+    "outDir": "./dist", // onde os arquivos compilados são armazenados
+    "rootDir": "./src", // a pasta raiz dos seus arquivos de origem
   },
   "include": [
     "src/**/*",
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

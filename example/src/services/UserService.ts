@@ -4,7 +4,9 @@ import { Repository } from 'bigquery-orm';
 
 @injectable()
 export class UserService {
-  constructor(@inject(Repository) private readonly userRepository: Repository<User>) { }
+  constructor(
+    @inject(Repository) private readonly userRepository: Repository<User>
+  ) { }
 
   async findAllUsers() {
     return await this.userRepository.find<User>({});
