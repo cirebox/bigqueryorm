@@ -10,13 +10,17 @@
     "google-cloud",
     "database"
   ],
+  "main": "lib/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint src --ext ts,tsx",
-    "lint:fix": "eslint src --ext ts,tsx --fix",
-    "build": "npx ts-node src/index.ts",
+    "format": "prettier --write \"lib/**/*.ts\"",
+    "lint": "eslint lib --ext ts,tsx",
+    "lint:fix": "eslint lib --ext ts,tsx --fix",
+    "build": "npx ts-node lib/index.ts",
     "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">20.11.1"
   },
   "dependencies": {
     "@google-cloud/bigquery": "^7.9.1",
@@ -35,5 +39,9 @@
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/cirebox/bigqueryorm/issues"
+  },
+  "homepage": "https://github.com/cirebox/bigqueryorm#README"
 }

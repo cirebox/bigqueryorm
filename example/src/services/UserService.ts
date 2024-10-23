@@ -1,5 +1,5 @@
 import { injectable, inject } from 'inversify';
-import { Repository } from '.';
+
 import { User } from '../entity/User';
 
 @injectable()
