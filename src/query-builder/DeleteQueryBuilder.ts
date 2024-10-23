@@ -1,4 +1,4 @@
-export class DeleteBuilder<Entity> {
+export class DeleteBuilder {
   private readonly tableId: string;
   private readonly whereConditions: string[] = [];
 

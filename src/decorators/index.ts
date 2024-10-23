@@ -1,3 +1,4 @@
-export { Table } from './Table';
-export { Column } from './Column';
-export { Index } from './IndexDecorator';
+export * from './Table';
+export * from './Dataset';
+export * from './Column';
+export * from './IndexDecorator';

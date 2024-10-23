@@ -7,7 +7,7 @@ export class UpdateBuilder<Entity> {
     this.tableId = tableId;
   }
 
-  set(column: keyof Entity, value: any): this {
+  set(column: keyof Entity, value: object | string | number): this {
     this.setConditions.push(`${String(column)} = ${JSON.stringify(value)}`);
     return this;
   }
@@ -18,7 +18,9 @@ export class UpdateBuilder<Entity> {
   }
 
   build(): string {
-    let query = `UPDATE \`${this.tableId}\` SET ${this.setConditions.join(', ')}`;
+    let query = `UPDATE \`${this.tableId}\` SET ${this.setConditions.join(
+      ', '
+    )}`;
     if (this.whereConditions.length > 0) {
       query += ` WHERE ${this.whereConditions.join(' AND ')}`;
     }

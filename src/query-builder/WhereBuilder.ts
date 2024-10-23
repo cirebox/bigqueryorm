@@ -1,4 +1,4 @@
-import { FindOperator, FindOptionsWhere } from "../find-options";
+import { FindOperator, FindOptionsWhere } from '../find-options';
 
 export function WhereBuilder<Entity>(where?: FindOptionsWhere<Entity>): string {
   if (!where || Object.keys(where).length === 0) {

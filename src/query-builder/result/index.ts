@@ -1,4 +1,4 @@
-export { FindResult } from './FindResult'
-export { InsertResult } from './InsertResult'
-export { UpdateResult } from './UpdateResult'
-export { DeleteResult } from './DeletResult'
+export * from './FindResult';
+export * from './InsertResult';
+export * from './UpdateResult';
+export * from './DeletResult';

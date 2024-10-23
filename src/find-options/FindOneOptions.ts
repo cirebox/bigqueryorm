@@ -1,4 +1,4 @@
-import { FindManyOptions } from "./FindManyOptions";
+import { FindManyOptions } from './FindManyOptions';
 
 export interface FindOneOptions<Entity> extends FindManyOptions<Entity> {
   /**

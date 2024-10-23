@@ -1,1 +1,0 @@
-export { ConnectionOrm } from './ConnectionOrm';

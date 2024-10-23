@@ -5,9 +5,9 @@ export function Index(...columns: string[]) {
       target.prototype.tableOptions = {};
     }
     target.prototype.tableOptions.clustering = {
-      fields: columns
+      fields: columns,
     };
 
     Reflect.defineMetadata('index', columns, target);
-  }
+  };
 }

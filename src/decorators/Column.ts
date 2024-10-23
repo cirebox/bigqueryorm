@@ -1,13 +1,17 @@
-// src/decorators/Column.ts
-import 'reflect-metadata';
-import { ColumnMetadata } from '../types';
+import { TableField } from '@google-cloud/bigquery';
 
-export function Column(metadata: ColumnMetadata): ClassDecorator {
-  return function (target: Function) {
-    target.prototype.name = metadata.name;
-    target.prototype.type = metadata.type;
-    target.prototype.mode = metadata.mode;
-    target.prototype.description = metadata.description;
-    Reflect.defineMetadata('column', metadata, target);
-  }
+export function BQColumn(options: TableField) {
+  return function (target: object, propertyKey: string) {
+    const metadataKey = 'bqColumnOptions';
+    const existingMetadata = Reflect.getMetadata(metadataKey, target) || {};
+    if (options) {
+      existingMetadata[propertyKey] = options;
+      Reflect.defineMetadata(metadataKey, existingMetadata, target);
+    }
+  };
+}
+
+export function getBQSchema(target: object): Record<string, TableField> {
+  const metadataKey = 'bqColumnOptions';
+  return Reflect.getMetadata(metadataKey, target);
 }

@@ -2,7 +2,7 @@ export class FindOperator<ValueType> {
   constructor(
     public operator: '>' | '<' | '>=' | '<=' | '!=' | 'IN' | 'LIKE',
     public value: ValueType
-  ) { }
+  ) {}
 }
 
 // Exemplo de uso de operadores para buscas mais avançadas

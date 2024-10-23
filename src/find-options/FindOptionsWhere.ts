@@ -1,4 +1,4 @@
-import { FindOperator } from "./FindOperator";
+import { FindOperator } from './FindOperator';
 
 export type FindOptionsWhere<Entity> = {
   /**
@@ -6,6 +6,6 @@ export type FindOptionsWhere<Entity> = {
    * Exemplo: { nome: "João" }
    */
   [P in keyof Entity]?: Entity[P] extends string
-  ? string | FindOperator<Entity[P]>
-  : Entity[P] | FindOperator<Entity[P]>;
+    ? string | FindOperator<Entity[P]>
+    : Entity[P] | FindOperator<Entity[P]>;
 };
