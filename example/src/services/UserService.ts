@@ -1,6 +1,6 @@
 import { injectable, inject } from 'inversify';
-
 import { User } from '../entity/User';
+import { Repository } from 'bigquery-orm';
 
 @injectable()
 export class UserService {

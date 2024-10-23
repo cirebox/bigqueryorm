@@ -1,3 +1,5 @@
+import { BQColumn, BQDataset, BQTable, FieldModeEnum } from "bigquery-orm";
+
 @BQDataset({
   name: 'user_test_dataset',
   suffix: 'year',
